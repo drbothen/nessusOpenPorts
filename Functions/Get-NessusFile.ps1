@@ -19,18 +19,18 @@ nessus files
 #>
     [cmdletBinding()]
     Param(
-        [Paramter(Mandatory = $true)]
+        [Parameter(Mandatory = $true)]
         [string]$Path,
 
-        [Paramter(Mandatory = $false)]
-        [switch]$recurse
+        [Parameter(Mandatory = $false)]
+        [switch]$recursive
     )
-    $Script:SafeCommands['Get-Right']
+
     if($recursive){
-        $Private:listing = Get-ChildItem -Path $Path -Filter "*.nessus" -Recurse
+        $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus" -Recurse
     }
     else{
-        $Private:listing = Get-ChildItem -Path $Path -Filter "*.nessus"
+        $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus"
     }
     if(!($Private:listing)){
         Throw "No Nessus Files Found"

@@ -47,6 +47,7 @@ Describe -Tags 'VersionChecks' "nessusOpenPorts manifest and changelog" {
 # General env Checks
 
 # all commands are called from the safe command table
+Import-Module "$((Get-Location).Path)\$($moduletName)"
 InModuleScope nessusOpenPorts {
     Describe 'SafeCommands table' {
         $path = $ExecutionContext.SessionState.Module.ModuleBase
@@ -57,7 +58,7 @@ InModuleScope nessusOpenPorts {
                 $i += 1
                 $tokens = $parseErrors = $null
                 $ast = [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref] $tokens, [ref] $parseErrors)
-                Write-Host $ast
+                #Write-Host $ast
                 $filter = {
                     $args[0] -is [System.Management.Automation.Language.CommandAst] -and
                     $args[0].InvocationOperator -eq [System.Management.Automation.Language.TokenKind]::Ampersand -and
@@ -67,7 +68,7 @@ InModuleScope nessusOpenPorts {
                 }
 
                 $ast.FindAll($filter, $true)
-                Write-Host $ast.FindAll($filter, $true) $i
+                #Write-Host $ast.FindAll($filter, $true) $i
             }
         )
         #write-host $callsToSafeCommands.GetType()
@@ -83,11 +84,11 @@ InModuleScope nessusOpenPorts {
 
 # Style Enforcement
 Describe 'Style rules' {
-    #$moduleRoot = (Get-Module $moduletName).ModuleBase
+    #$moduleRoot = (Get-Module $moduletName).ModuleBase $tempPath
 
     $files = @(
-        Get-ChildItem ($tempPath) -Include *ps1, *psm1
-        Get-ChildItem $tempPath"\Functions" -Include *.ps1, *.psm1 -Recurse
+        Get-ChildItem "$((Get-Location).Path)" -Include *ps1, *psm1
+        Get-ChildItem "$((Get-Location).Path)\Functions" -Include *.ps1, *.psm1 -Recurse
     )
 
     It "$($moduletName) source files contain no trailing whitespace" {
