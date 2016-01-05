@@ -1,7 +1,10 @@
 ﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 . "$here\$sut"
-#Import-Module "$((Get-Location).Path)\..\$($moduletName)"
+
+$moduleName = "nessusOpenPorts"
+
+Import-Module "..\$($moduleName)"
 InModuleScope nessusOpenPorts {
     Describe "Get-NessusFile" {
         Setup -File somefile.nessus
@@ -26,5 +29,10 @@ InModuleScope nessusOpenPorts {
         It "should throw No Nessus Files Found" {
             {Get-NessusFile -Path TestDrive:\Temp} | Should Throw "No Nessus Files Found"
         }
+
+        IT "should throw No Path Provided" {
+            {Get-NessusFile} | Should Throw "No Path Provided"
+        }
     }
 }
+Remove-Module $moduleName

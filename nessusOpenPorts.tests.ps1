@@ -3,7 +3,7 @@
 $manifestPath = "$here\nessusOpenPorts.psd1"
 $changeLogPath = "$here\CHANGELOG.md"
 $guidCheck = '9cf0111c-2993-4826-8c5c-c2076bffcb20'
-$moduletName = 'nessusOpenPorts'
+$moduleName = 'nessusOpenPorts'
 $tempPath = "H:\Powershell\Modules\Custom\NessusOpenPorts"
 
 # General manifest annd Changelog checks
@@ -16,7 +16,7 @@ Describe -Tags 'VersionChecks' "nessusOpenPorts manifest and changelog" {
         }
 
         It "has a valid name in the manifest" {
-            $Script:manifest.Name | Should Be $moduletName
+            $Script:manifest.Name | Should Be $moduleName
         }
         
         It "has a valid guid in the manifest" {
@@ -47,7 +47,7 @@ Describe -Tags 'VersionChecks' "nessusOpenPorts manifest and changelog" {
 # General env Checks
 
 # all commands are called from the safe command table
-Import-Module "$((Get-Location).Path)\$($moduletName)"
+Import-Module "$((Get-Location).Path)\$($moduleName)"
 InModuleScope nessusOpenPorts {
     Describe 'SafeCommands table' {
         $path = $ExecutionContext.SessionState.Module.ModuleBase
@@ -81,17 +81,17 @@ InModuleScope nessusOpenPorts {
         }
     }
 }
+Remove-Module $moduleName
 
 # Style Enforcement
 Describe 'Style rules' {
-    #$moduleRoot = (Get-Module $moduletName).ModuleBase $tempPath
 
     $files = @(
         Get-ChildItem "$((Get-Location).Path)" -Include *ps1, *psm1
         Get-ChildItem "$((Get-Location).Path)\Functions" -Include *.ps1, *.psm1 -Recurse
     )
 
-    It "$($moduletName) source files contain no trailing whitespace" {
+    It "$($moduleName) source files contain no trailing whitespace" {
         $badLines = @(
             foreach ($file in $files) {
                 $lines = [System.IO.File]::ReadAllLines($file.FullName)
@@ -110,7 +110,7 @@ Describe 'Style rules' {
         }
     }
 
-    It "$($moduletName) source files all end with a new line" {
+    It "$($moduleName) source files all end with a new line" {
         $badFiles = @(
             foreach ($file in $files) {
                 $string = [System.IO.File]::ReadAllText($file.FullName)
@@ -121,7 +121,7 @@ Describe 'Style rules' {
         )
 
         if ($badFiles.Count -gt 0) {
-            throw "The following files fo not end with newline: `r`n`r`n$($badFiles -join '`r`n')"
+            throw "The following files do not end with newline: `r`n`r`n$($badFiles -join '`r`n')"
         }
     }
 }
