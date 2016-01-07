@@ -1,0 +1,163 @@
+<ReportItem port="2868" 
+svc_name="npep-messaging?" 
+protocol="tcp" 
+severity="0" 
+pluginID="25221" 
+pluginName="Remote listeners enumeration (Linux / AIX)" 
+pluginFamily="Service detection">
+
+<agent>unix</agent>
+
+<description>By logging into the remote host with the supplied credentials, it is possible to obtain the name of the process listening on the remote port.
+
+Note that this method used by this plugin only works for hosts running Linux or AIX.</description>
+
+<fname>process_on_port.nasl</fname>
+
+<plugin_modification_date>2015/06/02</plugin_modification_date>
+
+<plugin_name>Remote listeners enumeration (Linux / AIX)</plugin_name>
+
+<plugin_publication_date>2007/05/16</plugin_publication_date>
+
+<plugin_type>local</plugin_type>
+
+<risk_factor>None</risk_factor>
+
+<script_version>1.17</script_version>
+
+<solution>n/a</solution>
+
+<synopsis>Using the supplied credentials, it is possible to identify the process listening on the remote port.</synopsis>
+
+<plugin_output>
+  Process id   : 2544
+  Executable   : /opt/vmware/sbin/vami-lighttpd
+  Command line : /opt/vmware/sbin/vami-lighttpd -f /opt/vmware/etc/lighttpd/lighttpd.conf 
+</plugin_output>
+
+</ReportItem>
+
+
+
+<ReportItem port="514" svc_name="syslog?" protocol="udp" severity="0" pluginID="25221" pluginName="Remote listeners enumeration (Linux / AIX)" pluginFamily="Service detection">
+<agent>unix</agent>
+<description>By logging into the remote host with the supplied credentials, it is possible to obtain the name of the process listening on the remote port.
+
+Note that this method used by this plugin only works for hosts running Linux or AIX.</description>
+<fname>process_on_port.nasl</fname>
+<plugin_modification_date>2015/06/02</plugin_modification_date>
+<plugin_name>Remote listeners enumeration (Linux / AIX)</plugin_name>
+<plugin_publication_date>2007/05/16</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>1.17</script_version>
+<solution>n/a</solution>
+<synopsis>Using the supplied credentials, it is possible to identify the process listening on the remote port.</synopsis>
+<plugin_output>
+  Process id   : 2118
+  Executable   : /sbin/syslog-ng
+  Command line : /sbin/syslog-ng 
+</plugin_output>
+
+
+
+<ReportItem port="445" svc_name="cifs" protocol="tcp" severity="0" pluginID="34252" pluginName="Microsoft Windows Remote Listeners Enumeration (WMI)" pluginFamily="Windows">
+<description>This script uses WMI to list the processes running on the remote host and listening on TCP / UDP ports.</description>
+<fname>wmi_process_on_port.nbin</fname>
+<plugin_modification_date>2015/08/24</plugin_modification_date>
+<plugin_name>Microsoft Windows Remote Listeners Enumeration (WMI)</plugin_name>
+<plugin_publication_date>2008/09/23</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>$Revision: 1.32 $</script_version>
+<solution>n/a</solution>
+<synopsis>It is possible to obtain the names of processes listening on the remote UDP and TCP ports.</synopsis>
+<plugin_output>
+The Win32 process &apos;System&apos; is listening on this port (pid 4).</plugin_output>
+</ReportItem>
+<ReportItem port="49152" svc_name="dce-rpc" protocol="tcp" severity="0" pluginID="34252" pluginName="Microsoft Windows Remote Listeners Enumeration (WMI)" pluginFamily="Windows">
+<description>This script uses WMI to list the processes running on the remote host and listening on TCP / UDP ports.</description>
+<fname>wmi_process_on_port.nbin</fname>
+<plugin_modification_date>2015/08/24</plugin_modification_date>
+<plugin_name>Microsoft Windows Remote Listeners Enumeration (WMI)</plugin_name>
+<plugin_publication_date>2008/09/23</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>$Revision: 1.32 $</script_version>
+<solution>n/a</solution>
+<synopsis>It is possible to obtain the names of processes listening on the remote UDP and TCP ports.</synopsis>
+<plugin_output>
+The Win32 process &apos;wininit.exe&apos; is listening on this port (pid 488).</plugin_output>
+</ReportItem>
+<ReportItem port="49153" svc_name="dce-rpc" protocol="tcp" severity="0" pluginID="34252" pluginName="Microsoft Windows Remote Listeners Enumeration (WMI)" pluginFamily="Windows">
+<description>This script uses WMI to list the processes running on the remote host and listening on TCP / UDP ports.</description>
+<fname>wmi_process_on_port.nbin</fname>
+<plugin_modification_date>2015/08/24</plugin_modification_date>
+<plugin_name>Microsoft Windows Remote Listeners Enumeration (WMI)</plugin_name>
+<plugin_publication_date>2008/09/23</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>$Revision: 1.32 $</script_version>
+<solution>n/a</solution>
+<synopsis>It is possible to obtain the names of processes listening on the remote UDP and TCP ports.</synopsis>
+<plugin_output>
+The Win32 process &apos;svchost.exe&apos; is listening on this port (pid 856).
+
+This process &apos;svchost.exe&apos; (pid 856) is hosting the following Windows services :
+Dhcp (@%SystemRoot%\system32\dhcpcore.dll,-100)
+eventlog (@%SystemRoot%\system32\wevtsvc.dll,-200)
+lmhosts (@%SystemRoot%\system32\lmhsvc.dll,-101)
+
+</plugin_output>
+</ReportItem>
+<ReportItem port="500" svc_name="isakmp?" protocol="udp" severity="0" pluginID="34252" pluginName="Microsoft Windows Remote Listeners Enumeration (WMI)" pluginFamily="Windows">
+<description>This script uses WMI to list the processes running on the remote host and listening on TCP / UDP ports.</description>
+<fname>wmi_process_on_port.nbin</fname>
+<plugin_modification_date>2015/08/24</plugin_modification_date>
+<plugin_name>Microsoft Windows Remote Listeners Enumeration (WMI)</plugin_name>
+<plugin_publication_date>2008/09/23</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>$Revision: 1.32 $</script_version>
+<solution>n/a</solution>
+<synopsis>It is possible to obtain the names of processes listening on the remote UDP and TCP ports.</synopsis>
+<plugin_output>
+The Win32 process &apos;svchost.exe&apos; is listening on this port (pid 936).
+
+This process &apos;svchost.exe&apos; (pid 936) is hosting the following Windows services :
+AeLookupSvc (@%SystemRoot%\system32\aelupsvc.dll,-1)
+Appinfo (@%systemroot%\system32\appinfo.dll,-100)
+CertPropSvc (@%SystemRoot%\System32\certprop.dll,-11)
+IKEEXT (@%SystemRoot%\system32\ikeext.dll,-501)
+iphlpsvc (@%SystemRoot%\system32\iphlpsvc.dll,-500)
+LanmanServer (@%systemroot%\system32\srvsvc.dll,-100)
+ProfSvc (@%systemroot%\system32\profsvc.dll,-300)
+Schedule (@%SystemRoot%\system32\schedsvc.dll,-100)
+SENS (@%SystemRoot%\system32\Sens.dll,-200)
+SessionEnv (@%SystemRoot%\System32\SessEnv.dll,-1026)
+ShellHWDetection (@%SystemRoot%\System32\shsvcs.dll,-12288)
+Winmgmt (@%Systemroot%\system32\wbem\wmisvc.dll,-205)
+wuauserv (Windows Update)
+
+</plugin_output>
+</ReportItem>
+<ReportItem port="3389" svc_name="ms-wbt-server?" protocol="tcp" severity="0" pluginID="34252" pluginName="Microsoft Windows Remote Listeners Enumeration (WMI)" pluginFamily="Windows">
+<description>This script uses WMI to list the processes running on the remote host and listening on TCP / UDP ports.</description>
+<fname>wmi_process_on_port.nbin</fname>
+<plugin_modification_date>2015/08/24</plugin_modification_date>
+<plugin_name>Microsoft Windows Remote Listeners Enumeration (WMI)</plugin_name>
+<plugin_publication_date>2008/09/23</plugin_publication_date>
+<plugin_type>local</plugin_type>
+<risk_factor>None</risk_factor>
+<script_version>$Revision: 1.32 $</script_version>
+<solution>n/a</solution>
+<synopsis>It is possible to obtain the names of processes listening on the remote UDP and TCP ports.</synopsis>
+<plugin_output>
+The Win32 process &apos;svchost.exe&apos; is listening on this port (pid 2876).
+
+This process &apos;svchost.exe&apos; (pid 2876) is hosting the following Windows services :
+TermService (@%SystemRoot%\System32\termsrv.dll,-268)
+
+</plugin_output>
+</ReportItem>

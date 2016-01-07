@@ -30,6 +30,10 @@ InModuleScope nessusOpenPorts {
             {Get-NessusFile -Path TestDrive:\Temp} | Should Throw "No Nessus Files Found"
         }
 
+        It "should throw path not found" {
+            {Get-NessusFile -Path TempDrive:\Temp} | Should Throw "path not found"
+        }
+
         IT "should throw No Path Provided" {
             {Get-NessusFile} | Should Throw "No Path Provided"
         }

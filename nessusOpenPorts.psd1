@@ -12,7 +12,7 @@
 RootModule = 'nessusOpenPorts.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # ID used to uniquely identify this module
 GUID = '9cf0111c-2993-4826-8c5c-c2076bffcb20'
@@ -66,7 +66,7 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = '*'
+FunctionsToExport = 'Invoke-NessusOpenPorts'
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'

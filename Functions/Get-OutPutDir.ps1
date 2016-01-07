@@ -16,17 +16,23 @@ Path to look for
 
 #>
 
-    [cmdletBinding()]
+    [CmdletBinding()]
     Param(
         [ValidateNotNull()]
         [string]$Path = $(Throw "No Path Provided")
     )
     if (& $SafeCommands['Test-Path'] $Path) {
-        return 'Path Exsits'
+        return 'Path Exsists'
     }
     else {
-        & $SafeCommands['New-Item'] -ItemType directory -Path $Path | Out-Null
-        return 'Created Path'
+        Try{
+            $ErrorActionPreference = 'Stop'
+            & $SafeCommands['New-Item'] -ItemType directory -Path $Path | Out-Null
+            return 'Created Path'
+        }
+        Catch {
+            Throw "unable to create at provided path: $($Path)"
+        }
     }
 
 }

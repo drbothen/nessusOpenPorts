@@ -19,7 +19,7 @@ nessus files
     -Intial Release
 
 #>
-    [cmdletBinding()]
+    [CmdletBinding()]
     Param(
         [ValidateNotNull()]
         [string]$Path = $(Throw "No Path Provided"),
@@ -27,16 +27,31 @@ nessus files
         [Parameter(Mandatory = $false)]
         [switch]$recursive
     )
+
     if($recursive){
-        $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus" -Recurse
+        Try {
+            $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus" -Recurse -ErrorAction Stop -ErrorVariable GETITEM
+        }
+        Catch {
+            if($GETITEM) {
+                Throw "path not found"
+            }
+        }
     }
-    else{
-        $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus"
+    else {
+        Try {
+            $Private:listing = & $SafeCommands['Get-ChildItem'] -Path $Path -Filter "*.nessus" -ErrorAction Stop -ErrorVariable GETITEM
+        }
+        Catch {
+            if($GETITEM) {
+                Throw "path not found"
+            }
+        }
     }
     if(!($Private:listing)){
         Throw "No Nessus Files Found"
     }
-    else{
+    else {
         return $Private:listing
     }
 }
